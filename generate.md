@@ -53,3 +53,8 @@ Then the issue with `stdarg.h not found` still occurs. This shows up in the
 [clang FAQ's](https://clang.llvm.org/docs/FAQ.html), so likely that's where
 the issue comes up. Duncan recommended a local build of Clang, then I'll
 know where everything is.
+
+Mon Jul 24 18:01:10 PDT 2017
+
+Moved development onto my Mac laptop using the brew version of llvm 4.0.
+Things seem to be working.
