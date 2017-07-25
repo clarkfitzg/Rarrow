@@ -1,0 +1,7 @@
+CXX_STD = CXX11
+
+# Avoiding the complexities of more general configuration for the moment.
+PKG_CPPFLAGS = -I/Users/clark/dev/arrow/cpp/src
+
+#PKG_LIBS = -L/Users/clark/dev/arrow/cpp/src
+

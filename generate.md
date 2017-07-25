@@ -58,3 +58,35 @@ Mon Jul 24 18:01:10 PDT 2017
 
 Moved development onto my Mac laptop using the brew version of llvm 4.0.
 Things seem to be working.
+
+## Local issues
+
+Tue Jul 25 14:27:41 PDT 2017
+
+Now I'm trying to make an R package that basically does nothing but load one header file from Arrow, ie. just
+
+```
+#include <arrow/array.h>
+```
+
+Here's the command and the first error:
+
+```
+clang++ -std=c++11 -I/Library/Frameworks/R.framework/Resources/include -DNDEBUG -I/Users/clark/dev/arrow/cpp/src -I/usr/local/opt/gettext/include -I/usr/local/opt/llvm/include    -fPIC  -Wall -mtune=core2 -g -O2 -c Rarrow.cpp -o Rarrow.o
+In file included from Rarrow.cpp:3:
+In file included from /Users/clark/dev/arrow/cpp/src/arrow/array.h:28:
+In file included from /Users/clark/dev/arrow/cpp/src/arrow/type.h:24:
+In file included from /usr/local/Cellar/llvm/4.0.0_1/bin/../include/c++/v1/ostream:138:
+In file included from /usr/local/Cellar/llvm/4.0.0_1/bin/../include/c++/v1/ios:216:
+/usr/local/Cellar/llvm/4.0.0_1/bin/../include/c++/v1/__locale:870:34: error: too many arguments provided to function-like macro invocation
+    int length(state_type& __st, const extern_type* __frm, const extern_type* __end, size_t __mx) const
+                                 ^
+```
+
+This means that `Rarrow.cpp` included `arrow/array.h` on line 3. Then array.h
+included type.h, and type.h included ostream, and so on. The error therefore
+happens internally in `/usr/local/Cellar/llvm`. This means that it's probably some
+configuration error on my part.
+
+This is going into `/usr/local/Cellar`, which is where Homebrew installs
+things. Did homebrew install llvm correctly?
