@@ -9,8 +9,12 @@ tu = createTU("arrow.cc", includes = arrow_dir, args = "-std=c++11")
 # Couple warnings, but runs
 e = getEnums(tu)
 
-# Need to go home, then I'll run this for longer.
+# Takes 48 minutes. That's a long time.
 system.time(k <- getCppClasses(tu))
+
+# 631
+length(k)
+
 
 
 #cat(makeEnumClass(e$PageSegMode), file = "../R/PageSegMode.R", sep = "\n")
