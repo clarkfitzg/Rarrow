@@ -46,4 +46,10 @@ First try:
 /usr/include/wchar.h:39:11: fatal error: 'stdarg.h' file not found
 ```
 
-What doesn't have C++ 11 support?
+What doesn't have C++ 11 support? Just my call to `createTU()`. Need to
+pass in args here.
+
+Then the issue with `stdarg.h not found` still occurs. This shows up in the
+[clang FAQ's](https://clang.llvm.org/docs/FAQ.html), so likely that's where
+the issue comes up. Duncan recommended a local build of Clang, then I'll
+know where everything is.

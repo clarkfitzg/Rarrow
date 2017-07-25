@@ -4,7 +4,7 @@ library(RCodeGen)
 
 arrow_dir = "/home/clark/dev/arrow/cpp/src"
 
-tu = createTU("arrow.cc", includes = arrow_dir)
+tu = createTU("arrow.cc", includes = arrow_dir, args = "-std=c++11")
 
 e = getEnums(tu)
 
