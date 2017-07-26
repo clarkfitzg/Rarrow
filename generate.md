@@ -72,7 +72,9 @@ Now I'm trying to make an R package that basically does nothing but load one hea
 Here's the command and the first error:
 
 ```
-clang++ -std=c++11 -I/Library/Frameworks/R.framework/Resources/include -DNDEBUG -I/Users/clark/dev/arrow/cpp/src -I/usr/local/opt/gettext/include -I/usr/local/opt/llvm/include    -fPIC  -Wall -mtune=core2 -g -O2 -c Rarrow.cpp -o Rarrow.o
+
+clang++ -H -std=c++11 -I/Library/Frameworks/R.framework/Resources/include -DNDEBUG -I/Users/clark/dev/arrow/cpp/src -I/usr/local/opt/gettext/include -I/usr/local/opt/llvm/include    -fPIC  -Wall -mtune=core2 -g -O2 -c Rarrow.cpp -o Rarrow.o
+
 In file included from Rarrow.cpp:3:
 In file included from /Users/clark/dev/arrow/cpp/src/arrow/array.h:28:
 In file included from /Users/clark/dev/arrow/cpp/src/arrow/type.h:24:
@@ -88,5 +90,41 @@ included type.h, and type.h included ostream, and so on. The error therefore
 happens internally in `/usr/local/Cellar/llvm`. This means that it's probably some
 configuration error on my part.
 
+In particular the problem is in:
+
+```
+/usr/local/Cellar/llvm/4.0.0_1/bin/../include/c++/v1/__locale:870:34
+```
+
+Looking again at the error messages, many of the problems come back to this
+particular file.
+
 This is going into `/usr/local/Cellar`, which is where Homebrew installs
-things. Did homebrew install llvm correctly?
+things. Did my homebrew install llvm correctly?
+
+I can isolate this issue further:
+
+```
+
+echo "#include <ostream>" > test.cc
+
+# Do I need to do this?
+echo "std::ostream & Print (std::ostream & stream);" >> test.cc
+
+clang++ -H -std=c++11 -DNDEBUG -I/usr/local/opt/llvm/include -fPIC  -Wall -mtune=core2 -g -O2 -c test.cc -o test.o
+
+clang++ -H -std=c++11 -DNDEBUG -fPIC  -Wall -mtune=core2 -g -O2 -c test.cc -o test.o
+
+```
+
+Both of the above run with no issue. Is this because nothing actually happens
+since there's essentially no code, or for some other reason?
+
+__Question__
+Why does this get included from /usr/local/Cellar? How do I find out where and
+how files are included?
+
+__Answer__
+Use the `-H` flag to view which files get included. [Stack Overflow](https://stackoverflow.com/questions/5834778/how-to-tell-where-a-header-file-is-included-from)
+
+
