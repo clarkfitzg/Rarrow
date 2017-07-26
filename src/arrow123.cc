@@ -16,7 +16,9 @@
 #include <Rinternals.h>
 
 
+// Calling the class constructor for Int32Builder
 arrow::Int32Builder builder(arrow::default_memory_pool(), arrow::int32());
+
 builder.Append(1);
 builder.Append(2);
 builder.Append(3);

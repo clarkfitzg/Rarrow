@@ -1,3 +1,6 @@
+Open questions for Duncan:
+
+What does `extern "C"` do?
 
 First try:
 
