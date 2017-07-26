@@ -66,7 +66,6 @@ things. Did my homebrew install llvm correctly?
 I can isolate this issue further:
 
 ```
-
 echo "#include <ostream>" > test.cc
 
 # Do I need to do this?

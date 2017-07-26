@@ -31,7 +31,6 @@ Looking at the [Rtesseract](git@github.com:duncantl/Rtesseract.git) project
 as an example because Duncan and Matt are working on this now.
 
 
-
 ## Install
 
 The file `arrow/cpp/src/arrow/api.h` is the target. This file includes all the
@@ -39,4 +38,5 @@ other header files. Comment calls it:
 
 > Coarse public API while the library is in development
 
-
+First thing, let's see if I can instantiate and go between a vector of
+doubles for Arrow and R.

@@ -1,2 +1,2 @@
-useDynLib(Rarrow, c_l2norm)
-export(l2norm)
+useDynLib(Rarrow, c_l2norm, c_get123)
+export(l2norm, get123)
