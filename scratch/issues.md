@@ -9,13 +9,16 @@ Open questions for Duncan:
 Wed Jul 26 12:07:08 PDT 2017
 
 
+
+```
+
+clang++ -std=c++11 -DNDEBUG -I/Users/clark/dev/arrow/cpp/src -I/usr/local/opt/gettext/include -I/usr/local/opt/llvm/include    -fPIC  -Wall -mtune=core2 -g -c arrow123.cc -o arrow123.o
+
+clang++ -std=c++11 -I/Users/clark/dev/arrow/cpp/src -c arrow123.cc -o arrow123.o
+
+```
+
 This results in the same error as installing the package. 
-
-```
-
-clang++ -std=c++11 -DNDEBUG -I/Users/clark/dev/arrow/cpp/src -I/usr/local/opt/gettext/include -I/usr/local/opt/llvm/include    -fPIC  -Wall -mtune=core2 -g -O2 -c arrow123.cc -o arrow123.o
-
-```
 
 The code:
 
@@ -33,7 +36,7 @@ arrow123.cc:14:1: error: unknown type name 'builder'
 ```
 
 Likely some silly basic mistake in C++ I'm making. Why does it say that this is
-a type name? I want it to be the name of the instance of the Int32Builer.
+a type name? I want it to be the name of the instance of the Int32Builder object.
 
 
 ## First try:
