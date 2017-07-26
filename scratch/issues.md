@@ -1,8 +1,42 @@
 Open questions for Duncan:
 
-What does `extern "C"` do?
+- What does `extern "C"` do? I think that it makes C++ routines available for the C API by handling the name mangling.
 
-First try:
+
+
+## Running Arrow example code
+
+Wed Jul 26 12:07:08 PDT 2017
+
+
+This results in the same error as installing the package. 
+
+```
+
+clang++ -std=c++11 -DNDEBUG -I/Users/clark/dev/arrow/cpp/src -I/usr/local/opt/gettext/include -I/usr/local/opt/llvm/include    -fPIC  -Wall -mtune=core2 -g -O2 -c arrow123.cc -o arrow123.o
+
+```
+
+The code:
+
+```
+#include <arrow/api.h>
+
+// Calling the class constructor for Int32Builder
+arrow::Int32Builder builder(arrow::default_memory_pool(), arrow::int32());
+```
+
+The error:
+
+```
+arrow123.cc:14:1: error: unknown type name 'builder'
+```
+
+Likely some silly basic mistake in C++ I'm making. Why does it say that this is
+a type name? I want it to be the name of the instance of the Int32Builer.
+
+
+## First try:
 
 ```
 > tu = createTU("arrow.cc", includes = arrow_dir)
