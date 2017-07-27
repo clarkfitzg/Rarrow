@@ -1,6 +1,19 @@
 Open questions for Duncan:
 
-- What does `extern "C"` do? I think that it makes C++ routines available for the C API by handling the name mangling.
+Thu Jul 27 09:56:10 PDT 2017
+
+Looking through Duncan's configuration stuff and comparing it on my machine
+I see that 
+
+```
+
+pkg-config --cflags arrow
+-I/usr/local/include
+
+```
+
+This directory doesn't have any of the arrow header files. So how do they
+get there?
 
 
 
@@ -15,7 +28,7 @@ clang++ -std=c++11 -DNDEBUG -I/Users/clark/dev/arrow/cpp/src -I/usr/local/opt/ge
 
 clang++ -std=c++11 -I/Users/clark/dev/arrow/cpp/src -c arrow123.cc -o arrow123.o
 
-clang++ -std=c++11 -I/Users/clark/dev/arrow/cpp/src arrow123.cc 
+clang++ -std=c++11 arrow123.cc 
 
 ```
 

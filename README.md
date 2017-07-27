@@ -1,6 +1,7 @@
-For development mode you'll first need to [install
-Arrow](https://github.com/apache/arrow/tree/master/cpp) and the
-dependencies:
+## Development install
+
+First [install Arrow](https://github.com/apache/arrow/tree/master/cpp) and
+the dependencies.
 
 Navigate to `arrow/cpp` in the Arrow source, and build the latest release.
 
@@ -12,8 +13,7 @@ make unittest
 make install
 ```
 
-To install Rarrow locally for development from within the `Rarrow`
-directory run:
+To install Rarrow from within the `Rarrow` directory run:
 
 ```
 ./configure
