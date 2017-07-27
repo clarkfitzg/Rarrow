@@ -9,12 +9,13 @@ Open questions for Duncan:
 Wed Jul 26 12:07:08 PDT 2017
 
 
-
 ```
 
 clang++ -std=c++11 -DNDEBUG -I/Users/clark/dev/arrow/cpp/src -I/usr/local/opt/gettext/include -I/usr/local/opt/llvm/include    -fPIC  -Wall -mtune=core2 -g -c arrow123.cc -o arrow123.o
 
 clang++ -std=c++11 -I/Users/clark/dev/arrow/cpp/src -c arrow123.cc -o arrow123.o
+
+clang++ -std=c++11 -I/Users/clark/dev/arrow/cpp/src arrow123.cc 
 
 ```
 
