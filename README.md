@@ -1,13 +1,21 @@
-This is meant to be the minimum required to write a C binding to R using
-only the `.Call()` interface.
+For development mode you'll first need to [install
+Arrow](https://github.com/apache/arrow/tree/master/cpp) and the
+dependencies:
+
+Navigate to `arrow/cpp` in the Arrow source, and build the latest release.
 
 ```
+mkdir release
+cd release
+cmake .. -DCMAKE_BUILD_TYPE=Release
+make unittest
+make install
+```
 
-library("dotCall")
-x = rnorm(10)
-xn = l2norm(x)
+To install Rarrow locally for development from within the `Rarrow`
+directory run:
 
-# Should be 0
-xn - sum(x * x)
-
+```
+./configure
+R CMD INSTALL .
 ```
