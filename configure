@@ -584,6 +584,7 @@ PACKAGE_URL=
 ac_unique_file="src/Makevars.in"
 ac_subst_vars='LTLIBOBJS
 LIBOBJS
+BOOST_LIBS
 ARROW_LDFLAGS
 ARROW_CFLAGS
 PKG_CONFIG
@@ -1707,6 +1708,9 @@ fi
 
 ARROW_CFLAGS=`$PKG_CONFIG --cflags arrow`
 ARROW_LDFLAGS=`$PKG_CONFIG --libs arrow`
+
+BOOST_LIBS="-lboost_system -lboost_filesystem -Wl,-rpath,/usr/local/lib"
+
 
 
 
